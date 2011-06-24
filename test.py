@@ -24,6 +24,11 @@ class TestInsert(unittest.TestCase):
         self.root.insert(6)
         self.assertEqual(str(self.root), '1345689')
 
+    def test_insert_return(self):
+        self.assertEqual(True, self.root.insert(3))
+        self.assertEqual(False, self.root.insert(3))
+        self.assertEqual(False, self.root.insert(5))
+
 class TestRemove(unittest.TestCase):
    
     def setUp(self):
