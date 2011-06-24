@@ -79,9 +79,11 @@ class TreeNode:
             return self.data
 
         else:
+            data = self.data
             succ = self._successor()
             self.data = succ.data
             succ._delete()
+            return data
 
     def _successor(self):
         """Find the in-order successor of this node. Return a node."""
