@@ -38,9 +38,29 @@ class TestRemove(unittest.TestCase):
         self.root.insert(8)
         self.assertEqual(str(self.root), '123456789')
 
-    def test_one_remove(self):
-        self.root.remove(3)
-        self.assertEqual(str(self.root), '12456789')
+    def test_leaf_remove(self):
+        self.root.remove(8)
+        self.assertEqual(str(self.root), '12345679')
+
+    def test_internal_remove(self):
+        self.root.remove(1)
+        self.assertEqual(str(self.root), '23456789')
+
+    def test_root_remove(self):
+        self.root.remove(5)
+        self.assertEqual(str(self.root), '12346789')
+
+    def test_mult_remove(self):
+        self.root.remove(2)
+        self.root.remove(4)
+        self.root.remove(6)
+        self.root.remove(8)
+        self.assertEqual(str(self.root), '13579')
+
+    def test_remove_return(self):
+        self.assertEqual(3, self.root.remove(3))
+        self.assertEqual(None, self.root.remove(3))
+        self.assertEqual(None, self.root.remove(42))
 
 if __name__ == '__main__':
     unittest.main()
